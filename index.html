@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexus | Launch Your Future</title>
+  <title>Nexus | Futuristic Neon</title>
   <style>
     :root {
-      --bg1: #0f172a;
-      --bg2: #1d4ed8;
-      --bg3: #8b5cf6;
-      --bg4: #f97316;
-      --card: rgba(15, 23, 42, 0.45);
-      --card-strong: rgba(15, 23, 42, 0.7);
-      --glass: rgba(255, 255, 255, 0.08);
-      --white: #f8fafc;
-      --muted: rgba(255,255,255,0.74);
-      --primary: #7c3aed;
-      --primary-2: #a78bfa;
+      --bg-1: #050816;
+      --bg-2: #0b122a;
+      --bg-3: #111827;
+      --cyan: #65f0ff;
+      --cyan-2: #3dd9ff;
+      --purple: #8b5cf6;
+      --pink: #ff4fd8;
+      --orange: #ff9f1c;
+      --glass: rgba(14, 21, 38, 0.6);
+      --glass-2: rgba(255,255,255,0.08);
+      --text: #edf6ff;
+      --muted: rgba(221, 234, 255, 0.75);
+      --line: rgba(133, 198, 255, 0.22);
       --success: #22c55e;
-      --outline: rgba(255,255,255,0.15);
     }
 
     * { box-sizing: border-box; }
@@ -27,16 +28,11 @@
       margin: 0;
       min-height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 32%, var(--bg3) 65%, var(--bg4) 100%);
-      background-size: 180% 180%;
-      animation: bgMove 16s ease infinite;
-      color: var(--white);
-    }
-
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      background:
+        radial-gradient(circle at top left, rgba(101, 240, 255, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255, 79, 216, 0.12), transparent 30%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 35%, var(--bg-3) 100%);
+      color: var(--text);
     }
 
     body {
@@ -44,116 +40,163 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 32px;
+      padding: 30px;
+      overflow-x: hidden;
     }
 
-    .shell {
+    .grid-glow {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .app-shell {
+      position: relative;
+      z-index: 1;
       width: min(1280px, 100%);
       min-height: 760px;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      background: rgba(15, 23, 42, 0.24);
-      border: 1px solid var(--outline);
+      grid-template-columns: 1.18fr 0.82fr;
+      background: rgba(9, 13, 22, 0.5);
+      border: 1px solid var(--line);
       border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.45);
+      box-shadow:
+        0 0 0 1px rgba(101, 240, 255, 0.1),
+        0 0 30px rgba(101, 240, 255, 0.12),
+        0 35px 80px rgba(2, 6, 23, 0.8);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
 
     .hero {
-      padding: 72px 64px;
+      position: relative;
+      padding: 72px 60px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      background: linear-gradient(135deg, rgba(101,240,255,0.04), rgba(139,92,246,0.04));
     }
 
-    .pill {
+    .corner-orb {
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(101,240,255,0.28), rgba(101,240,255,0.02) 55%, transparent 70%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
       width: fit-content;
-      padding: 10px 16px;
+      padding: 9px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.04);
-      font-size: 12px;
-      letter-spacing: 1.5px;
+      background: rgba(101, 240, 255, 0.08);
+      border: 1px solid rgba(101,240,255,0.25);
+      color: var(--cyan);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      font-weight: 700;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 24px;
+      font-size: 11px;
+      font-weight: 800;
+      box-shadow: 0 0 20px rgba(101, 240, 255, 0.18);
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(3rem, 5vw, 5.4rem);
+      margin: 24px 0 18px;
+      font-size: clamp(3rem, 5vw, 5.5rem);
       line-height: 0.96;
-      letter-spacing: -0.06em;
-      max-width: 620px;
+      letter-spacing: -0.07em;
+      text-shadow: 0 0 18px rgba(101, 240, 255, 0.18);
     }
 
-    .hero p {
-      max-width: 580px;
-      font-size: 1.08rem;
-      line-height: 1.85;
+    h1 .highlight {
+      color: var(--cyan);
+      text-shadow: 0 0 12px rgba(101, 240, 255, 0.8);
+    }
+
+    .hero-copy {
+      max-width: 570px;
       color: var(--muted);
-      margin: 22px 0 28px;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      margin: 0 0 28px;
     }
 
-    .actions {
+    .cta-row {
       display: flex;
-      gap: 18px;
       flex-wrap: wrap;
+      gap: 18px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 170px;
-      padding: 15px 24px;
+      min-width: 176px;
+      padding: 16px 24px;
       border-radius: 14px;
-      font-weight: 700;
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
     }
 
-    .primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      color: white;
-      box-shadow: 0 18px 30px rgba(124, 58, 237, 0.38);
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: #06111c;
+      box-shadow: 0 0 26px rgba(101, 240, 255, 0.26);
     }
 
-    .secondary {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: white;
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
     }
 
     .right-panel {
-      background: rgba(9, 14, 29, 0.46);
-      border-left: 1px solid rgba(255,255,255,0.1);
+      position: relative;
       padding: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: rgba(5, 9, 20, 0.55);
+      border-left: 1px solid rgba(101,240,255,0.12);
+    }
+
+    .right-panel::before {
+      content: "";
+      position: absolute;
+      inset: 16px 12px 16px 0;
+      background: linear-gradient(180deg, rgba(101,240,255,0.12), transparent);
+      border-radius: 24px;
+      pointer-events: none;
     }
 
     .signup-wrap {
-      width: 100%;
-      max-width: 430px;
+      position: relative;
+      z-index: 1;
+      width: min(420px, 100%);
       min-height: 640px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(15, 23, 42, 0.4);
-      border: 1px solid rgba(255,255,255,0.12);
+      padding: 10px;
+      border: 1px solid rgba(101,240,255,0.2);
       border-radius: 24px;
-      padding: 12px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+      background: rgba(9, 15, 26, 0.78);
+      box-shadow: 0 0 24px rgba(101,240,255,0.12);
     }
 
     .signup-wrap iframe {
@@ -166,36 +209,38 @@
     }
 
     @media (max-width: 980px) {
-      .shell {
+      .app-shell {
         grid-template-columns: 1fr;
       }
 
       .right-panel {
         border-left: none;
-        border-top: 1px solid rgba(255,255,255,0.1);
+        border-top: 1px solid rgba(101,240,255,0.12);
       }
     }
 
-    @media (max-width: 540px) {
-      body { padding: 16px; }
-      .hero { padding: 40px 24px; }
-      .actions { flex-direction: column; }
+    @media (max-width: 560px) {
+      body { padding: 18px; }
+      .hero { padding: 42px 24px; }
+      .cta-row { flex-direction: column; }
       .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
+  <div class="grid-glow"></div>
+
+  <div class="app-shell">
     <section class="hero">
-      <div class="pill">Welcome to NEXUS</div>
-      <h1>Build the next<br />big idea.</h1>
-      <p>
-        Join a bold, creative community where ideas turn into action.
-        Collaborate, learn, and launch faster with a platform built for momentum.
+      <div class="corner-orb"></div>
+      <div class="eyebrow">Nexus OS</div>
+      <h1>Build<br><span class="highlight">Tomorrow</span></h1>
+      <p class="hero-copy">
+        Launch faster, connect deeper, and turn ambitious ideas into real momentum with a platform built for creators, teams, and future thinkers.
       </p>
-      <div class="actions">
-        <a class="btn primary" href="signup.html">Create Account</a>
-        <a class="btn secondary" href="#">Explore More</a>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="signup.html">Create Account</a>
+        <a class="btn btn-secondary" href="#">View Platform</a>
       </div>
     </section>
 

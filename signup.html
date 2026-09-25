@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Us - Branded Sign Up</title>
+    <title>Nexus | Sign Up</title>
     <style>
         :root {
-            --primary-color: #7c3aed;
-            --primary-hover: #6d28d9;
-            --bg-gradient-start: #0f172a;
-            --bg-gradient-mid: #1d4ed8;
-            --bg-gradient-end: #f97316;
-            --bg-soft: rgba(15,23,42,0.28);
-            --card-border: rgba(255,255,255,0.18);
+            --bg-a: #040b1d;
+            --bg-b: #0f172a;
+            --bg-c: #1d4ed8;
+            --cyan: #65f0ff;
+            --purple: #8b5cf6;
+            --pink: #ff4fd8;
+            --success: #22c55e;
+            --text: #edf6ff;
+            --muted: rgba(240, 245, 255, 0.76);
         }
 
         * {
@@ -33,13 +35,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
-            background-size: 300% 300%;
-            animation: gradientBG 15s ease infinite;
             padding: 24px;
+            background:
+                radial-gradient(circle at top left, rgba(101, 240, 255, 0.18), transparent 24%),
+                radial-gradient(circle at bottom right, rgba(255, 79, 216, 0.12), transparent 28%),
+                linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 45%, var(--bg-c) 100%);
+            background-size: 180% 180%;
+            animation: gradientShift 16s ease infinite;
         }
 
-        @keyframes gradientBG {
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -48,32 +53,36 @@
         .signup-container {
             width: 100%;
             max-width: 420px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid var(--card-border);
+            padding: 34px 28px 28px;
+            border-radius: 22px;
+            color: var(--text);
+            background: rgba(10, 16, 28, 0.68);
+            border: 1px solid rgba(101, 240, 255, 0.2);
+            box-shadow:
+                0 0 0 1px rgba(101, 240, 255, 0.1),
+                0 0 30px rgba(101, 240, 255, 0.12),
+                0 24px 50px rgba(2, 6, 23, 0.7);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border-radius: 22px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.2);
-            padding: 34px 28px 28px;
-            color: white;
             text-align: center;
         }
 
         .brand-logo {
+            margin-bottom: 8px;
             font-size: 2.2rem;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            text-shadow: 0 0 16px rgba(101, 240, 255, 0.5);
         }
 
         .brand-logo span {
-            color: var(--primary-color);
+            color: var(--cyan);
         }
 
         .subtitle {
             margin-bottom: 28px;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.94rem;
+            font-size: 0.92rem;
+            color: var(--muted);
         }
 
         .input-group {
@@ -85,13 +94,13 @@
         .input-group input {
             width: 100%;
             padding: 14px 15px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            color: white;
+            border-radius: 12px;
+            border: 1px solid rgba(146, 170, 255, 0.2);
+            background: rgba(255,255,255,0.03);
             font-size: 1rem;
+            color: var(--text);
             outline: none;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
         .input-group input::placeholder {
@@ -99,60 +108,60 @@
         }
 
         .input-group input:focus {
-            border-color: var(--primary-color);
-            background: rgba(255,255,255,0.06);
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(101, 240, 255, 0.14);
+            background: rgba(255,255,255,0.04);
         }
 
         .input-group label {
             position: absolute;
-            left: 15px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            color: #d9d9d9;
+            color: rgba(224, 233, 255, 0.8);
             font-size: 1rem;
             pointer-events: none;
-            transition: 0.3s ease all;
+            transition: all 0.25s ease;
         }
 
         .input-group input:focus ~ label,
         .input-group input:not(:placeholder-shown) ~ label {
             top: 0;
             transform: translateY(-50%);
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(9, 15, 26, 0.9);
             padding: 0 6px;
             border-radius: 6px;
             font-size: 0.8rem;
-            color: #d8b4fe;
+            color: var(--cyan);
         }
 
         .signup-btn {
             width: 100%;
+            margin-top: 8px;
             padding: 14px 16px;
             border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-            color: white;
-            font-size: 1rem;
-            font-weight: 700;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #06111c;
+            font-weight: 800;
             cursor: pointer;
+            box-shadow: 0 0 26px rgba(101, 240, 255, 0.28);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            margin-top: 8px;
-            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.35);
         }
 
         .signup-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 0 32px rgba(139, 92, 246, 0.35);
         }
 
         .login-link {
-            margin-top: 20px;
+            margin-top: 22px;
+            color: rgba(240,245,255,0.8);
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
         }
 
         .login-link a {
-            color: #c4b5fd;
+            color: var(--cyan);
             text-decoration: none;
             font-weight: 700;
         }
@@ -163,7 +172,7 @@
 
         .error-msg {
             display: none;
-            margin-top: 5px;
+            margin-top: 6px;
             color: #fca5a5;
             font-size: 0.8rem;
             text-align: left;
@@ -221,11 +230,13 @@
             setTimeout(() => {
                 submitBtn.textContent = 'Account Created! 🎉';
                 submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                submitBtn.style.boxShadow = '0 0 30px rgba(34, 197, 94, 0.4)';
 
                 setTimeout(() => {
                     document.getElementById('signupForm').reset();
                     submitBtn.textContent = 'Sign Up';
-                    submitBtn.style.background = 'linear-gradient(135deg, var(--primary-color), var(--primary-hover))';
+                    submitBtn.style.background = 'linear-gradient(135deg, var(--cyan), var(--purple))';
+                    submitBtn.style.boxShadow = '0 0 26px rgba(101, 240, 255, 0.28)';
                 }, 1800);
             }, 1000);
         });
