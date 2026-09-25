@@ -6,15 +6,17 @@
     <title>Nexus | Sign Up</title>
     <style>
         :root {
-            --bg-a: #040b1d;
-            --bg-b: #0f172a;
-            --bg-c: #1d4ed8;
-            --cyan: #65f0ff;
-            --purple: #8b5cf6;
-            --pink: #ff4fd8;
-            --success: #22c55e;
-            --text: #edf6ff;
-            --muted: rgba(240, 245, 255, 0.76);
+            --bg-a: #020408;
+            --bg-b: #080e1b;
+            --bg-c: #0d1a2e;
+            --cyan: #00ffff;
+            --cyan-bright: #00f7ff;
+            --purple: #a855f7;
+            --purple-bright: #d946ef;
+            --pink: #ff006e;
+            --text: #f0f9ff;
+            --text-secondary: #cbd5e1;
+            --success: #22ff00;
         }
 
         * {
@@ -37,8 +39,8 @@
             justify-content: center;
             padding: 24px;
             background:
-                radial-gradient(circle at top left, rgba(101, 240, 255, 0.18), transparent 24%),
-                radial-gradient(circle at bottom right, rgba(255, 79, 216, 0.12), transparent 28%),
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.25), transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.2), transparent 40%),
                 linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 45%, var(--bg-c) 100%);
             background-size: 180% 180%;
             animation: gradientShift 16s ease infinite;
@@ -53,54 +55,59 @@
         .signup-container {
             width: 100%;
             max-width: 420px;
-            padding: 34px 28px 28px;
-            border-radius: 22px;
+            padding: 36px 30px 30px;
+            border-radius: 24px;
             color: var(--text);
-            background: rgba(10, 16, 28, 0.68);
-            border: 1px solid rgba(101, 240, 255, 0.2);
+            background: rgba(5, 10, 20, 0.8);
+            border: 2px solid rgba(0, 255, 255, 0.3);
             box-shadow:
-                0 0 0 1px rgba(101, 240, 255, 0.1),
-                0 0 30px rgba(101, 240, 255, 0.12),
-                0 24px 50px rgba(2, 6, 23, 0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+                0 0 0 1px rgba(0, 255, 255, 0.15),
+                0 0 40px rgba(0, 255, 255, 0.2),
+                0 0 80px rgba(168, 85, 247, 0.12),
+                0 30px 60px rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             text-align: center;
         }
 
         .brand-logo {
-            margin-bottom: 8px;
-            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-size: 2.4rem;
             font-weight: 900;
-            letter-spacing: 2px;
-            text-shadow: 0 0 16px rgba(101, 240, 255, 0.5);
+            letter-spacing: 2.5px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
 
         .brand-logo span {
-            color: var(--cyan);
+            background: linear-gradient(90deg, var(--cyan-bright), var(--purple-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .subtitle {
-            margin-bottom: 28px;
-            font-size: 0.92rem;
-            color: var(--muted);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
         }
 
         .input-group {
             position: relative;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
             text-align: left;
         }
 
         .input-group input {
             width: 100%;
-            padding: 14px 15px;
+            padding: 15px 16px;
             border-radius: 12px;
-            border: 1px solid rgba(146, 170, 255, 0.2);
-            background: rgba(255,255,255,0.03);
+            border: 1.5px solid rgba(0, 255, 255, 0.25);
+            background: rgba(0, 20, 40, 0.6);
             font-size: 1rem;
             color: var(--text);
             outline: none;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.05);
         }
 
         .input-group input::placeholder {
@@ -108,62 +115,70 @@
         }
 
         .input-group input:focus {
-            border-color: var(--cyan);
-            box-shadow: 0 0 0 3px rgba(101, 240, 255, 0.14);
-            background: rgba(255,255,255,0.04);
+            border-color: var(--cyan-bright);
+            box-shadow: 
+                inset 0 0 15px rgba(0, 255, 255, 0.1),
+                0 0 0 4px rgba(0, 255, 255, 0.2);
+            background: rgba(0, 30, 50, 0.8);
         }
 
         .input-group label {
             position: absolute;
-            left: 14px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(224, 233, 255, 0.8);
+            color: rgba(220, 230, 255, 0.85);
             font-size: 1rem;
             pointer-events: none;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
         }
 
         .input-group input:focus ~ label,
         .input-group input:not(:placeholder-shown) ~ label {
             top: 0;
             transform: translateY(-50%);
-            background: rgba(9, 15, 26, 0.9);
-            padding: 0 6px;
-            border-radius: 6px;
+            background: linear-gradient(135deg, var(--bg-a), var(--bg-b));
+            padding: 0 8px;
+            border-radius: 8px;
             font-size: 0.8rem;
-            color: var(--cyan);
+            color: var(--cyan-bright);
         }
 
         .signup-btn {
             width: 100%;
-            margin-top: 8px;
-            padding: 14px 16px;
-            border: none;
+            margin-top: 10px;
+            padding: 15px 16px;
+            border: 2px solid var(--cyan-bright);
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--cyan), var(--purple));
-            color: #06111c;
-            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--cyan-bright));
+            color: #000;
+            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 0 26px rgba(101, 240, 255, 0.28);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.4),
+                0 0 60px rgba(0, 255, 255, 0.25),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .signup-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 32px rgba(139, 92, 246, 0.35);
+            box-shadow: 
+                0 0 40px rgba(0, 255, 255, 0.6),
+                0 0 80px rgba(0, 255, 255, 0.35),
+                inset 0 0 30px rgba(255, 255, 255, 0.15);
         }
 
         .login-link {
-            margin-top: 22px;
-            color: rgba(240,245,255,0.8);
-            font-size: 0.9rem;
+            margin-top: 24px;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
         }
 
         .login-link a {
-            color: var(--cyan);
+            color: var(--cyan-bright);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .login-link a:hover {
@@ -173,9 +188,10 @@
         .error-msg {
             display: none;
             margin-top: 6px;
-            color: #fca5a5;
+            color: #ff1493;
             font-size: 0.8rem;
             text-align: left;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -201,7 +217,7 @@
                 <div class="error-msg" id="passwordError">Password must be at least 6 characters.</div>
             </div>
 
-            <button type="submit" class="signup-btn">Sign Up</button>
+            <button type="submit" class="signup-btn">🚀 Sign Up</button>
         </form>
 
         <div class="login-link">
@@ -219,26 +235,27 @@
 
             if (password.value.length < 6) {
                 passwordError.style.display = 'block';
-                password.style.borderColor = '#fca5a5';
+                password.style.borderColor = '#ff1493';
                 return;
             }
 
             passwordError.style.display = 'none';
-            password.style.borderColor = 'rgba(255,255,255,0.2)';
-            submitBtn.textContent = 'Creating Account...';
+            password.style.borderColor = 'rgba(0, 255, 255, 0.3)';
+            submitBtn.textContent = '⏳ Creating Account...';
 
             setTimeout(() => {
-                submitBtn.textContent = 'Account Created! 🎉';
-                submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-                submitBtn.style.boxShadow = '0 0 30px rgba(34, 197, 94, 0.4)';
+                submitBtn.textContent = '✅ Account Created! 🎉';
+                submitBtn.style.background = 'linear-gradient(135deg, #22ff00, #00ff88)';
+                submitBtn.style.color = '#000';
+                submitBtn.style.boxShadow = '0 0 40px rgba(34, 255, 0, 0.5)';
 
                 setTimeout(() => {
                     document.getElementById('signupForm').reset();
-                    submitBtn.textContent = 'Sign Up';
-                    submitBtn.style.background = 'linear-gradient(135deg, var(--cyan), var(--purple))';
-                    submitBtn.style.boxShadow = '0 0 26px rgba(101, 240, 255, 0.28)';
-                }, 1800);
-            }, 1000);
+                    submitBtn.textContent = '🚀 Sign Up';
+                    submitBtn.style.background = 'linear-gradient(135deg, var(--cyan), var(--cyan-bright))';
+                    submitBtn.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.4), 0 0 60px rgba(0, 255, 255, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }, 1200);
         });
     </script>
 </body>
