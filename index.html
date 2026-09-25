@@ -1,176 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus | Launch Your Future</title>
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #1d4ed8;
+      --bg3: #8b5cf6;
+      --bg4: #f97316;
+      --card: rgba(15, 23, 42, 0.45);
+      --card-strong: rgba(15, 23, 42, 0.7);
+      --glass: rgba(255, 255, 255, 0.08);
+      --white: #f8fafc;
+      --muted: rgba(255,255,255,0.74);
+      --primary: #7c3aed;
+      --primary-2: #a78bfa;
+      --success: #22c55e;
+      --outline: rgba(255,255,255,0.15);
+    }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 32px;
-            background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 300% 300%;
-            animation: gradientBG 15s ease infinite;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    * { box-sizing: border-box; }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 32%, var(--bg3) 65%, var(--bg4) 100%);
+      background-size: 180% 180%;
+      animation: bgMove 16s ease infinite;
+      color: var(--white);
+    }
 
-        .app-shell {
-            width: 100%;
-            max-width: 1280px;
-            min-height: 760px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.18);
-            border-radius: 28px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .hero-panel {
-            padding: 80px 60px;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
 
-        .eyebrow {
-            display: inline-block;
-            width: fit-content;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.2);
-            font-size: 12px;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            margin-bottom: 22px;
-        }
+    .shell {
+      width: min(1280px, 100%);
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      background: rgba(15, 23, 42, 0.24);
+      border: 1px solid var(--outline);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
-        h1 {
-            font-size: clamp(2.4rem, 5vw, 5rem);
-            line-height: 1.05;
-            margin: 0 0 18px;
-            letter-spacing: -0.05em;
-        }
+    .hero {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    }
 
-        .hero-text {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.82);
-            max-width: 620px;
-            margin-bottom: 28px;
-        }
+    .pill {
+      width: fit-content;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+    }
 
-        .cta-row {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      max-width: 620px;
+    }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.2s ease;
-        }
+    .hero p {
+      max-width: 580px;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin: 22px 0 28px;
+    }
 
-        .btn-primary {
-            background: #6c63ff;
-            color: white;
-        }
+    .actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-        .btn-primary:hover {
-            background: #5750d1;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 170px;
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
 
-        .btn-secondary {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-        }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
-        .signup-panel {
-            background: rgba(14, 18, 38, 0.55);
-            border-left: 1px solid rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
+    .primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: 0 18px 30px rgba(124, 58, 237, 0.38);
+    }
 
-        .signup-box {
-            width: 100%;
-            max-width: 440px;
-            height: 100%;
-            min-height: 620px;
-            border-radius: 22px;
-            overflow: hidden;
-            background: transparent;
-            box-shadow: 0 18px 35px rgba(0,0,0,0.2);
-        }
+    .secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+    }
 
-        .signup-box iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 620px;
-            border: 0;
-            display: block;
-            background: transparent;
-        }
+    .right-panel {
+      background: rgba(9, 14, 29, 0.46);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        @media (max-width: 900px) {
-            .app-shell {
-                grid-template-columns: 1fr;
-            }
+    .signup-wrap {
+      width: 100%;
+      max-width: 430px;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 12px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+    }
 
-            .signup-panel {
-                border-left: none;
-                border-top: 1px solid rgba(255,255,255,0.15);
-            }
-        }
-    </style>
+    .signup-wrap iframe {
+      width: 100%;
+      min-height: 610px;
+      border: 0;
+      border-radius: 18px;
+      background: transparent;
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .right-panel {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 16px; }
+      .hero { padding: 40px 24px; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-    <div class="app-shell">
-        <section class="hero-panel">
-            <div class="eyebrow">Welcome to NEXUS</div>
-            <h1>Build your next big idea.</h1>
-            <p class="hero-text">
-                Join a platform designed for creators, learners, and teams who want to grow,
-                collaborate, and turn bright ideas into real-world impact.
-            </p>
-            <div class="cta-row">
-                <a class="btn btn-primary" href="signup.html">Create Account</a>
-                <a class="btn btn-secondary" href="#">Explore More</a>
-            </div>
-        </section>
+  <div class="shell">
+    <section class="hero">
+      <div class="pill">Welcome to NEXUS</div>
+      <h1>Build the next<br />big idea.</h1>
+      <p>
+        Join a bold, creative community where ideas turn into action.
+        Collaborate, learn, and launch faster with a platform built for momentum.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="signup.html">Create Account</a>
+        <a class="btn secondary" href="#">Explore More</a>
+      </div>
+    </section>
 
-        <aside class="signup-panel">
-            <div class="signup-box">
-                <iframe src="signup.html" title="Nexus Sign Up Form"></iframe>
-            </div>
-        </aside>
-    </div>
+    <aside class="right-panel">
+      <div class="signup-wrap">
+        <iframe src="signup.html" title="Nexus sign up form"></iframe>
+      </div>
+    </aside>
+  </div>
 </body>
 </html>
