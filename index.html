@@ -12,11 +12,14 @@
         body {
             margin: 0;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
             background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
             background-size: 300% 300%;
             animation: gradientBG 15s ease infinite;
-            position: relative;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         @keyframes gradientBG {
@@ -25,36 +28,149 @@
             100% { background-position: 0% 50%; }
         }
 
-        .signup-link {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-            padding: 12px 18px;
-            background: rgba(255,255,255,0.12);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            backdrop-filter: blur(8px);
-        }
-
-        .signup-link:hover {
-            background: rgba(255,255,255,0.18);
-        }
-
-        .signup-frame {
+        .app-shell {
             width: 100%;
-            min-height: 100vh;
+            max-width: 1280px;
+            min-height: 760px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 28px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .hero-panel {
+            padding: 80px 60px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            width: fit-content;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 12px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 5vw, 5rem);
+            line-height: 1.05;
+            margin: 0 0 18px;
+            letter-spacing: -0.05em;
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.82);
+            max-width: 620px;
+            margin-bottom: 28px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #6c63ff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5750d1;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .signup-panel {
+            background: rgba(14, 18, 38, 0.55);
+            border-left: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .signup-box {
+            width: 100%;
+            max-width: 440px;
+            height: 100%;
+            min-height: 620px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: transparent;
+            box-shadow: 0 18px 35px rgba(0,0,0,0.2);
+        }
+
+        .signup-box iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 620px;
             border: 0;
             display: block;
+            background: transparent;
+        }
+
+        @media (max-width: 900px) {
+            .app-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-panel {
+                border-left: none;
+                border-top: 1px solid rgba(255,255,255,0.15);
+            }
         }
     </style>
 </head>
 <body>
-    <a class="signup-link" href="signup.html">Open Final Signup Page →</a>
-    <iframe class="signup-frame" src="signup.html" title="Nexus Signup Page"></iframe>
+    <div class="app-shell">
+        <section class="hero-panel">
+            <div class="eyebrow">Welcome to NEXUS</div>
+            <h1>Build your next big idea.</h1>
+            <p class="hero-text">
+                Join a platform designed for creators, learners, and teams who want to grow,
+                collaborate, and turn bright ideas into real-world impact.
+            </p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="signup.html">Create Account</a>
+                <a class="btn btn-secondary" href="#">Explore More</a>
+            </div>
+        </section>
+
+        <aside class="signup-panel">
+            <div class="signup-box">
+                <iframe src="signup.html" title="Nexus Sign Up Form"></iframe>
+            </div>
+        </aside>
+    </div>
 </body>
 </html>
