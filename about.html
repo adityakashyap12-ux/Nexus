@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Nexus</title>
+  <style>
+    :root {
+      --bg-1: #050816;
+      --bg-2: #0b122a;
+      --bg-3: #111827;
+      --cyan: #65f0ff;
+      --purple: #8b5cf6;
+      --pink: #ff4fd8;
+      --text: #edf6ff;
+      --muted: rgba(221, 234, 255, 0.75);
+      --line: rgba(133, 198, 255, 0.22);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(101, 240, 255, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255, 79, 216, 0.12), transparent 30%),
+        linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 35%, var(--bg-3) 100%);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      overflow-x: hidden;
+    }
+
+    .grid-glow {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(1280px, 100%);
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      background: rgba(9, 13, 22, 0.5);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(101, 240, 255, 0.1),
+        0 0 30px rgba(101, 240, 255, 0.12),
+        0 35px 80px rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .content {
+      position: relative;
+      padding: 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(101,240,255,0.04), rgba(139,92,246,0.04));
+      overflow-y: auto;
+    }
+
+    .corner-orb {
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(101,240,255,0.28), rgba(101,240,255,0.02) 55%, transparent 70%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 24px;
+      padding: 8px 12px;
+      color: var(--cyan);
+      text-decoration: none;
+      border: 1px solid rgba(101,240,255,0.25);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(101,240,255,0.1);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      text-shadow: 0 0 18px rgba(101, 240, 255, 0.18);
+    }
+
+    h1 .highlight {
+      color: var(--cyan);
+      text-shadow: 0 0 12px rgba(101, 240, 255, 0.8);
+    }
+
+    .description {
+      max-width: 560px;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .features {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .feature-item {
+      padding: 16px;
+      border: 1px solid rgba(101,240,255,0.15);
+      border-radius: 12px;
+      background: rgba(101,240,255,0.05);
+    }
+
+    .feature-item strong {
+      color: var(--cyan);
+    }
+
+    .sidebar {
+      position: relative;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 9, 20, 0.55);
+      border-left: 1px solid rgba(101,240,255,0.12);
+    }
+
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      inset: 16px 12px 16px 0;
+      background: linear-gradient(180deg, rgba(101,240,255,0.12), transparent);
+      border-radius: 24px;
+      pointer-events: none;
+    }
+
+    .signup-card {
+      position: relative;
+      z-index: 1;
+      width: min(420px, 100%);
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      border: 1px solid rgba(101,240,255,0.2);
+      border-radius: 24px;
+      background: rgba(9, 15, 26, 0.78);
+      box-shadow: 0 0 24px rgba(101,240,255,0.12);
+    }
+
+    .signup-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.6rem;
+      color: var(--cyan);
+    }
+
+    .signup-card p {
+      margin: 0 0 24px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .signup-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: #06111c;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 0 26px rgba(101, 240, 255, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 32px rgba(139, 92, 246, 0.35);
+    }
+
+    @media (max-width: 980px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-left: none;
+        border-top: 1px solid rgba(101,240,255,0.12);
+      }
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 18px; }
+      .content { padding: 42px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-glow"></div>
+
+  <div class="container">
+    <section class="content">
+      <div class="corner-orb"></div>
+      <a href="index.html" class="back-link">← Back Home</a>
+      <h1>About <span class="highlight">Nexus</span></h1>
+      <p class="description">
+        Nexus is a futuristic platform designed for creators, developers, and teams who want to build, collaborate, and scale their ideas into reality. We combine cutting-edge technology with an intuitive experience to unlock human potential.
+      </p>
+      <div class="features">
+        <div class="feature-item">
+          <strong>⚡ Lightning Fast</strong><br>
+          Built with performance in mind for seamless collaboration at scale.
+        </div>
+        <div class="feature-item">
+          <strong>🔐 Secure by Default</strong><br>
+          Enterprise-grade security to protect your ideas and data.
+        </div>
+        <div class="feature-item">
+          <strong>🌐 Global Community</strong><br>
+          Connect with creators and builders worldwide.
+        </div>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="signup-card">
+        <h2>Ready?</h2>
+        <p>Join Nexus and start building tomorrow, today.</p>
+        <a href="signup.html" class="signup-btn">Create Account</a>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
